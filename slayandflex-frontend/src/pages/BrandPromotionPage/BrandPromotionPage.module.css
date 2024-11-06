@@ -1,0 +1,165 @@
+/* BrandPromotionPage.module.css */
+
+.brand-promotion-page {
+  padding: 20px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+}
+
+.current-plan {
+  background-color: #f0f8ff;
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.current-plan h2 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+}
+
+.current-plan h3 {
+  margin-top: 15px;
+}
+
+.cancel-button {
+  background-color: var(--error-color);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 15px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.cancel-button:hover {
+  background-color: #c0392b;
+}
+
+.plan-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.plan-card {
+  width: 300px;
+  margin: 15px;
+  background-color: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.plan-name {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-top: 20px;
+}
+
+.plan-price {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  margin: 10px 0;
+}
+
+.plan-duration {
+  font-size: 1rem;
+  color: #555555;
+}
+
+.services-title {
+  font-size: 1.2rem;
+  margin-top: 15px;
+}
+
+.services-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 20px 0;
+}
+
+.service-item {
+  padding: 5px 0;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.plan-button,
+.current-plan-button {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 80%;
+}
+
+.plan-button:hover {
+  background-color: #2980b9;
+}
+
+.current-plan-button {
+  background-color: #95a5a6;
+  cursor: default;
+}
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 50px;
+  color: var(--error-color);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .plan-card {
+    width: 90%;
+  }
+}
+
+/* Add styles for the new buttons */
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.analytics-button {
+  padding: 10px 20px;
+  background-color: #28a745; /* Green color */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.analytics-button:hover {
+  background-color: #218838;
+}
+
+.cancel-button {
+  padding: 10px 20px;
+  background-color: #dc3545; /* Red color */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-button:hover {
+  background-color: #c82333;
+}
+
+/* Adjust existing styles as needed */

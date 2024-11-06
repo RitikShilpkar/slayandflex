@@ -1,0 +1,17 @@
+/* PaymentSuccessPage.module.css */
+
+.success-page {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .success-page h1 {
+    font-size: 2rem;
+    color: #2ecc71;
+    margin-bottom: 20px;
+  }
+  
+  .success-page p {
+    font-size: 1.2rem;
+  }
+  

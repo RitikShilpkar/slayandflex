@@ -1,0 +1,94 @@
+/* LoginPage.module.css */
+
+.login-page {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: var(--primary-color);
+}
+
+.error-message {
+  color: var(--error-color);
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.submit-button {
+  padding: 12px 20px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.submit-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1rem;
+}
+
+.register-link a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 480px) {
+  .login-page {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}

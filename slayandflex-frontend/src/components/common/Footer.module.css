@@ -1,0 +1,18 @@
+/* Footer.module.css */
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f1f1f1;
+  color: #333333;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    font-size: 16px;
+  }
+}
