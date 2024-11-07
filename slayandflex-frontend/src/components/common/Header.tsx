@@ -44,7 +44,7 @@ const Header: React.FC = () => {
   return (
     <header className={styles['header']}>
       <Link to="/" className={styles['logo']}>
-      Stay and Flex
+      Slay and Flex
       </Link>
       <div className={styles['menu-icon']} onClick={handleMenuToggle}>
         <div></div>
