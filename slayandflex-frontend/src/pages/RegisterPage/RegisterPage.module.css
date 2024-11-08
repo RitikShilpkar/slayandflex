@@ -5,64 +5,83 @@
   margin: 40px auto;
   padding: 20px;
   background-color: #ffffff;
-  border: 1px solid #eaeaea;
-  border-radius: 8px;
+  border: 1px solid #d4cfc5; /* Updated border color for consistency with theme */
+  border-radius: 16px; /* Increased radius for a modern, rounded look */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+  font-family: 'Playfair Display', serif;
+  box-sizing: border-box; /* Prevents overflow due to padding */
 }
 
 .title {
   text-align: center;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  color: var(--primary-color);
+  margin-bottom: 25px; /* Increased for better visual separation */
+  font-size: 2rem;
+  color: #3d2f25; /* Updated color to match the theme */
+  font-weight: bold;
 }
 
 .error-message {
   color: var(--error-color);
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px; /* Increased margin for better visibility */
+  font-size: 1rem;
+  font-weight: bold; /* Made error messages bold to emphasize them */
 }
 
 .register-form {
   display: flex;
   flex-direction: column;
+  gap: 20px; /* Added gap for better spacing between elements */
 }
 
 .form-group {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
 }
 
 .form-label {
   margin-bottom: 5px;
   font-weight: bold;
-  color: #333333;
+  color: #3d2f25; /* Updated to match the color scheme */
 }
 
 .form-input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #eaeaea;
-  border-radius: 4px;
+  padding: 12px; /* Increased padding for better touch targets */
+  border: 1px solid #d4cfc5; /* Updated border color */
+  border-radius: 8px; /* Increased border-radius for a softer appearance */
   font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-input:focus {
-  border-color: var(--primary-color);
+  border-color: #3d2f25; /* Updated focus color to match primary theme */
+  box-shadow: 0 0 5px rgba(61, 47, 37, 0.5); /* Added subtle shadow on focus */
   outline: none;
 }
 
 .submit-button {
-  padding: 12px 20px;
-  background-color: var(--primary-color);
-  color: #ffffff;
+  padding: 16px; /* Increased padding for better usability */
+  background-color: #3d2f25; /* Updated color to match the theme */
+  color: #e7e4d8; /* Light beige color for better contrast */
   border: none;
-  border-radius: 4px;
+  border-radius: 50px; /* Rounded appearance for the button */
   cursor: pointer;
-  font-size: 1rem;
-  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 15px;
+}
+
+.submit-button:hover {
+  background-color: #5b5347; /* Slightly lighter color for hover effect */
+  transform: translateY(-3px); /* Subtle lift on hover */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
 }
 
 .submit-button:disabled {
-  background-color: #cccccc;
+  background-color: #7f8c8d; /* Neutral color for disabled state */
   cursor: not-allowed;
 }
 
@@ -75,20 +94,33 @@
 .login-link a {
   color: var(--secondary-color);
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .login-link a:hover {
   text-decoration: underline;
+  color: #2980b9; /* Added color change on hover */
 }
 
 /* Responsive Design */
 @media screen and (max-width: 480px) {
   .register-page {
     margin: 20px;
-    padding: 15px;
+    padding: 20px;
+    max-width: 90%; /* Ensure it doesn't exceed screen width */
+    box-sizing: border-box; /* Include padding in total width */
   }
 
   .title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+  }
+
+  .submit-button {
+    padding: 14px;
+    font-size: 1rem;
+  }
+
+  .form-group {
+    gap: 15px; /* Reduced gap to save space on small screens */
   }
 }

@@ -1,14 +1,19 @@
-/* Footer.module.css */
 
 .footer {
   text-align: center;
   padding: 20px;
-  background-color: #f1f1f1;
-  color: #333333;
+  background-color: #3d2f25; /* Dark earthy brown color matching the reference */
+  color: #e7e4d8; /* Light beige color for the text */
   position: fixed;
   width: 100%;
   bottom: 0;
   font-size: 14px;
+  font-family: 'Playfair Display', serif; /* Elegant serif font */
+}
+
+.footer p {
+  margin: 0;
+  font-style: italic; /* Adds an elegant touch to the footer text */
 }
 
 @media (min-width: 768px) {

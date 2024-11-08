@@ -104,14 +104,28 @@ export const createOrder = async (
     // Send order confirmation email
     const emailSubject = `Order Confirmation - Your Order #${createdOrder._id}`;
     const emailBody = `
-      <h1>Thank you for your order!</h1>
-      <p>Hi ${req.user?.name},</p>
-      <p>Your order has been placed successfully. Here are the details:</p>
-      <p><strong>Order ID:</strong> ${createdOrder._id}</p>
-      <p><strong>Total Price:</strong> ₹${createdOrder.totalPrice}</p>
-      <p>We will notify you once your order is shipped.</p>
-      <p>Thank you for shopping with us!</p>
-    `;
+    <div style="font-family: 'Playfair Display', serif; color: #3d2f25; line-height: 1.6;">
+      <h1 style="color: #3d2f25; font-size: 2rem;">Thank you for your order!</h1>
+      <p style="font-size: 1.2rem;">Hi ${req.user?.name},</p>
+      <p style="font-size: 1.2rem;">
+        Your order has been placed successfully. Here are the details:
+      </p>
+      <div style="padding: 15px; background-color: #f8f8f8; border: 1px solid #d4cfc5; border-radius: 8px;">
+        <p style="font-size: 1.1rem; margin: 0;">
+          <strong>Order ID:</strong> ${createdOrder._id}
+        </p>
+        <p style="font-size: 1.1rem; margin: 5px 0;">
+          <strong>Total Price:</strong> ₹${createdOrder.totalPrice.toFixed(2)}
+        </p>
+      </div>
+      <p style="margin-top: 20px; font-size: 1.2rem;">
+        We will notify you once your order is shipped.
+      </p>
+      <p style="font-size: 1.2rem;">Thank you for shopping with us!</p>
+      <p style="font-size: 1rem; margin-top: 40px; color: #5b5347;">&copy; ${new Date().getFullYear()} Slay and Flex. All rights reserved.</p>
+    </div>
+  `;
+  
 
     try {
       await sendEmail({
@@ -133,13 +147,26 @@ export const createOrder = async (
     
     // Notify user about order confirmation
     await createNotification({
-        userId: (userId as string).toString(),
-        type: 'order_confirmation',
-        message: `Your order #${createdOrder._id} has been successfully placed.`,
-        emailSubject: 'Order Confirmation',
-        emailBody: `<p>Hi ${req.user?.name},</p><p>Your order #${createdOrder._id} has been successfully placed.</p>`,
-        smsBody: `Hi ${req.user?.name}, your order #${createdOrder._id} has been placed successfully.`,
-      });
+      userId: (userId as string).toString(),
+      type: 'order_confirmation',
+      message: `Your order #${createdOrder._id} has been successfully placed.`,
+      emailSubject: 'Order Confirmation',
+      emailBody: `
+        <div style="font-family: 'Playfair Display', serif; color: #3d2f25; line-height: 1.6;">
+          <h2 style="color: #3d2f25; font-size: 1.8rem;">Order Confirmation</h2>
+          <p style="font-size: 1.2rem;">Hi ${req.user?.name},</p>
+          <p style="font-size: 1.2rem;">
+            Your order <strong>#${createdOrder._id}</strong> has been successfully placed. Thank you for shopping with us!
+          </p>
+          <div style="margin-top: 20px; padding: 15px; background-color: #f8f8f8; border: 1px solid #d4cfc5; border-radius: 8px;">
+            <p style="font-size: 1.1rem; margin: 0;">We are currently processing your order, and will notify you once it is shipped.</p>
+          </div>
+          <p style="font-size: 1rem; margin-top: 40px; color: #5b5347;">&copy; ${new Date().getFullYear()} Slay and Flex. All rights reserved.</p>
+        </div>
+      `,
+      smsBody: `Hi ${req.user?.name}, your order #${createdOrder._id} has been placed successfully.`,
+    });
+    
     } catch (error) {
         console.error("error in sending sms")
     }
@@ -272,11 +299,22 @@ export const updateOrderToDelivered = async (
       // Send delivery confirmation email
       const emailSubject = `Your Order #${order._id} has been Delivered`;
       const emailBody = `
-        <h1>Your Order is Delivered!</h1>
-        <p>Hi ${order.user.name},</p>
-        <p>Your order with ID <strong>${order._id}</strong> has been delivered.</p>
-        <p>We hope you enjoy your purchase!</p>
-      `;
+      <div style="font-family: 'Playfair Display', serif; color: #3d2f25; line-height: 1.6; padding: 20px; background-color: #f9f9f9; border-radius: 8px;">
+        <h1 style="color: #3d2f25; font-size: 2rem; margin-bottom: 20px;">Your Order is Delivered!</h1>
+        <p style="font-size: 1.2rem;">Hi ${order.user.name},</p>
+        <p style="font-size: 1.2rem; margin-top: 10px;">
+          Your order with ID <strong style="color: #5b5347;">${order._id}</strong> has been delivered.
+        </p>
+        <p style="font-size: 1.2rem; margin-top: 20px;">
+          We hope you enjoy your purchase! Thank you for shopping with us.
+        </p>
+        <div style="margin-top: 40px; padding: 15px; background-color: #f0f0f0; border: 1px solid #d4cfc5; border-radius: 8px;">
+          <p style="font-size: 1rem; margin: 0;">For any assistance, please contact our support team.</p>
+        </div>
+        <p style="font-size: 1rem; margin-top: 40px; color: #5b5347;">&copy; ${new Date().getFullYear()} Slay and Flex. All rights reserved.</p>
+      </div>
+    `;
+    
 
       try {
         await sendEmail({
@@ -372,13 +410,25 @@ export const updateOrderToPaid = async (
     // Send payment confirmation email
     const emailSubject = `Payment Confirmation - Your Order #${order._id}`;
     const emailBody = `
-      <h1>Payment Received!</h1>
-      <p>Hi ${order.user.name},</p>
-      <p>We have received your payment for Order ID <strong>${order._id}</strong>.</p>
-      <p><strong>Amount Paid:</strong> ₹${order.totalPrice}</p>
-      <p>We will notify you once your order is shipped.</p>
-      <p>Thank you for shopping with us!</p>
-    `;
+    <div style="font-family: 'Playfair Display', serif; color: #3d2f25; line-height: 1.6; padding: 20px; background-color: #f9f9f9; border-radius: 8px;">
+      <h1 style="color: #3d2f25; font-size: 2rem; margin-bottom: 20px;">Payment Received!</h1>
+      <p style="font-size: 1.2rem;">Hi ${order.user.name},</p>
+      <p style="font-size: 1.2rem; margin-top: 10px;">
+        We have received your payment for Order ID <strong style="color: #5b5347;">${order._id}</strong>.
+      </p>
+      <p style="font-size: 1.2rem; margin-top: 20px;">
+        <strong>Amount Paid:</strong> ₹${order.totalPrice}
+      </p>
+      <p style="font-size: 1.2rem; margin-top: 20px;">
+        We will notify you once your order is shipped. Thank you for shopping with us!
+      </p>
+      <div style="margin-top: 40px; padding: 15px; background-color: #f0f0f0; border: 1px solid #d4cfc5; border-radius: 8px;">
+        <p style="font-size: 1rem; margin: 0;">For any assistance, please contact our support team.</p>
+      </div>
+      <p style="font-size: 1rem; margin-top: 40px; color: #5b5347;">&copy; ${new Date().getFullYear()} Slay and Flex. All rights reserved.</p>
+    </div>
+  `;
+  
 
     try {
       await sendEmail({
@@ -451,11 +501,22 @@ export const updateOrderStatus = async (
         action = "Order Shipped";
         emailSubject = `Your Order #${order._id} has been Shipped`;
         emailBody = `
-          <h1>Your Order is Shipped!</h1>
-          <p>Hi ${order.user.name},</p>
-          <p>Your order with ID <strong>${order._id}</strong> has been shipped.</p>
-          <p>Thank you for shopping with us!</p>
-        `;
+        <div style="font-family: 'Playfair Display', serif; color: #3d2f25; line-height: 1.6; padding: 20px; background-color: #f9f9f9; border-radius: 8px;">
+          <h1 style="color: #3d2f25; font-size: 2rem; margin-bottom: 20px;">Your Order is Shipped!</h1>
+          <p style="font-size: 1.2rem;">Hi ${order.user.name},</p>
+          <p style="font-size: 1.2rem; margin-top: 10px;">
+            Your order with ID <strong style="color: #5b5347;">${order._id}</strong> has been shipped.
+          </p>
+          <p style="font-size: 1.2rem; margin-top: 20px;">
+            Thank you for shopping with us! We hope you enjoy your purchase.
+          </p>
+          <div style="margin-top: 40px; padding: 15px; background-color: #f0f0f0; border: 1px solid #d4cfc5; border-radius: 8px;">
+            <p style="font-size: 1rem; margin: 0;">For any assistance, please contact our support team.</p>
+          </div>
+          <p style="font-size: 1rem; margin-top: 40px; color: #5b5347;">&copy; ${new Date().getFullYear()} Slay and Flex. All rights reserved.</p>
+        </div>
+      `;
+      
         break;
 
       case "delivered":
@@ -477,11 +538,22 @@ export const updateOrderStatus = async (
         action = "Order Delivered";
         emailSubject = `Your Order #${order._id} has been Delivered`;
         emailBody = `
-          <h1>Your Order is Delivered!</h1>
-          <p>Hi ${order.user.name},</p>
-          <p>Your order with ID <strong>${order._id}</strong> has been delivered.</p>
-          <p>We hope you enjoy your purchase!</p>
-        `;
+        <div style="font-family: 'Playfair Display', serif; color: #3d2f25; line-height: 1.6; padding: 20px; background-color: #f9f9f9; border-radius: 8px;">
+          <h1 style="color: #3d2f25; font-size: 2rem; margin-bottom: 20px;">Your Order is Delivered!</h1>
+          <p style="font-size: 1.2rem;">Hi ${order.user.name},</p>
+          <p style="font-size: 1.2rem; margin-top: 10px;">
+            Your order with ID <strong style="color: #5b5347;">${order._id}</strong> has been successfully delivered.
+          </p>
+          <p style="font-size: 1.2rem; margin-top: 20px;">
+            We hope you enjoy your purchase!
+          </p>
+          <div style="margin-top: 40px; padding: 15px; background-color: #f0f0f0; border: 1px solid #d4cfc5; border-radius: 8px;">
+            <p style="font-size: 1rem; margin: 0;">For any assistance, please contact our support team.</p>
+          </div>
+          <p style="font-size: 1rem; margin-top: 40px; color: #5b5347;">&copy; ${new Date().getFullYear()} Slay and Flex. All rights reserved.</p>
+        </div>
+      `;
+      
         break;
 
       default:
@@ -591,12 +663,22 @@ export const cancelOrder = async (
     // Send cancellation email
     const emailSubject = `Order Canceled - Order #${order._id}`;
     const emailBody = `
-      <h1>Your Order has been Canceled</h1>
-      <p>Hi ${order.user.name},</p>
-      <p>Your order with ID <strong>${order._id}</strong> has been canceled.</p>
-      <p>If you have any questions, feel free to contact our support team.</p>
-      <p>Thank you for shopping with us!</p>
-    `;
+    <div style="font-family: 'Playfair Display', serif; color: #3d2f25; line-height: 1.6; padding: 20px; background-color: #f9f9f9; border-radius: 8px;">
+      <h1 style="color: #3d2f25; font-size: 2rem; margin-bottom: 20px;">Your Order has been Canceled</h1>
+      <p style="font-size: 1.2rem;">Hi ${order.user.name},</p>
+      <p style="font-size: 1.2rem; margin-top: 10px;">
+        Your order with ID <strong style="color: #5b5347;">${order._id}</strong> has been canceled.
+      </p>
+      <p style="font-size: 1.2rem; margin-top: 20px;">
+        If you have any questions, feel free to contact our support team. We're here to assist you with any concerns you might have.
+      </p>
+      <div style="margin-top: 40px; padding: 15px; background-color: #f0f0f0; border: 1px solid #d4cfc5; border-radius: 8px;">
+        <p style="font-size: 1rem; margin: 0;">Contact support: <a href="mailto:support@slayandflex.com" style="color: #3d2f25; text-decoration: none;">support@slayandflex.com</a></p>
+      </div>
+      <p style="font-size: 1rem; margin-top: 40px; color: #5b5347;">&copy; ${new Date().getFullYear()} Slay and Flex. All rights reserved.</p>
+    </div>
+  `;
+  
 
     try {
       await sendEmail({
@@ -676,26 +758,34 @@ export const addTrackingInfo = async (
       // Send tracking information email to user
       const emailSubject = `Your Order #${order._id} is on the way!`;
       const emailBody = `
-        <h1>Order Shipped!</h1>
-        <p>Hi ${order.user.name},</p>
-        <p>Your order with ID <strong>${order._id}</strong> has been shipped.</p>
-        <p><strong>Carrier:</strong> ${carrier}</p>
-        <p><strong>Tracking Number:</strong> ${trackingNumber}</p>
-        <p><strong>Status:</strong> ${status}</p>
-        ${
-          estimatedDelivery
-            ? `<p><strong>Estimated Delivery:</strong> ${new Date(
-                estimatedDelivery
-              ).toLocaleDateString()}</p>`
-            : ""
-        }
-        ${
-          trackingUrl
-            ? `<p>You can track your package here: <a href="${trackingUrl}">${trackingUrl}</a></p>`
-            : ""
-        }
-        <p>Thank you for shopping with us!</p>
-      `;
+  <div style="font-family: 'Playfair Display', serif; color: #3d2f25; line-height: 1.6; padding: 20px; background-color: #f9f9f9; border-radius: 8px;">
+    <h1 style="color: #3d2f25; font-size: 2rem; margin-bottom: 20px;">Order Shipped!</h1>
+    <p style="font-size: 1.2rem;">Hi ${order.user.name},</p>
+    <p style="font-size: 1.2rem; margin-top: 10px;">
+      Your order with ID <strong style="color: #5b5347;">${order._id}</strong> has been shipped.
+    </p>
+    <div style="margin-top: 20px; padding: 15px; background-color: #ffffff; border: 1px solid #d4cfc5; border-radius: 8px;">
+      <p style="font-size: 1.1rem; margin-bottom: 10px;"><strong>Carrier:</strong> ${carrier}</p>
+      <p style="font-size: 1.1rem; margin-bottom: 10px;"><strong>Tracking Number:</strong> ${trackingNumber}</p>
+      <p style="font-size: 1.1rem; margin-bottom: 10px;"><strong>Status:</strong> ${status}</p>
+      ${
+        estimatedDelivery
+          ? `<p style="font-size: 1.1rem; margin-bottom: 10px;"><strong>Estimated Delivery:</strong> ${new Date(
+              estimatedDelivery
+            ).toLocaleDateString()}</p>`
+          : ""
+      }
+      ${
+        trackingUrl
+          ? `<p style="font-size: 1.1rem;">You can track your package here: <a href="${trackingUrl}" style="color: #3d2f25; text-decoration: none;">Track your package</a></p>`
+          : ""
+      }
+    </div>
+    <p style="font-size: 1.2rem; margin-top: 30px;">Thank you for shopping with us!</p>
+    <p style="font-size: 1rem; margin-top: 40px; color: #5b5347;">&copy; ${new Date().getFullYear()} Slay and Flex. All rights reserved.</p>
+  </div>
+`;
+
   
       try {
         await sendEmail({

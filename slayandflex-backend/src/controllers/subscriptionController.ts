@@ -26,6 +26,9 @@ export const subscribeToPlan = async (
   try {
     const { plan: planName } = req.body;
 
+    console.log({planName});
+    
+
     // Validate plan
     const selectedPlan = await Plan.findOne({ name: planName });
     if (!selectedPlan) {
@@ -123,6 +126,11 @@ export const getMySubscription = async (
   next: NextFunction
 ) => {
   try {
+
+    console.log({req: req
+      .user
+    });
+    
     const subscription = await Subscription.findOne({
       user: req.user?._id,
       isActive: true,
@@ -143,7 +151,9 @@ export const cancelSubscription = async (
   next: NextFunction
 ) => {
   try {
-    const subscriptionId = req.params.id;
+    const subscriptionId = req.body.id;
+    console.log({subscriptionId, id: req.user?._id});
+    
 
     const subscription = await Subscription.findOne({
       _id: subscriptionId,

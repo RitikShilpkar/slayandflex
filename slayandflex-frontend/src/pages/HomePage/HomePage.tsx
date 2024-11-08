@@ -7,12 +7,12 @@ const HomePage: React.FC = () => {
     <div className={styles['home-page']}>
       <div className={styles['options']}>
         <Link to="/brand-promotion" className={styles['option-card']}>
-          <h2>Brand Promotion</h2>
-          <p>Discover our exclusive plans and promotions.</p>
+          <h2 className={styles['title']}>Brand Promotion</h2>
+          <p className={styles['description']}>Discover our exclusive plans and promotions.</p>
         </Link>
         <Link to="/shop" className={styles['option-card']}>
-          <h2>Shop Now</h2>
-          <p>Browse and purchase our products.</p>
+          <h2 className={styles['title']}>Shop Now</h2>
+          <p className={styles['description']}>Browse and purchase our products.</p>
         </Link>
       </div>
     </div>

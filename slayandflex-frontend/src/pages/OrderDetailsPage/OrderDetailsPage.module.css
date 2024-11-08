@@ -1,49 +1,97 @@
-
+/* OrderDetailsPage.module.css */
 
 .order-details-page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Playfair Display', serif;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.order-details-page h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #3d2f25; /* Updated to match brand color theme */
+  font-weight: bold;
+}
+
+.order-details-page p {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: #333333; /* Consistent with other text colors */
+}
+
+.order-details-page h3 {
+  font-size: 1.5rem;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #5b5347; /* A warm, contrasting color */
+  font-weight: bold;
+}
+
+.order-details-page ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.order-details-page li {
+  background-color: #f8f8f8;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #d4cfc5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.order-details-page li:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add depth on hover */
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.4rem;
+  padding: 20px;
+  color: #3d2f25; /* Matching brand color */
+}
+
+.error-message {
+  color: #dc3545; /* A red color to indicate an error */
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .order-details-page {
+    padding: 15px;
+    margin: 10px;
+    border-radius: 12px;
   }
-  
+
   .order-details-page h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-align: center;
+    font-size: 1.8rem;
   }
-  
-  .order-details-page p {
-    font-size: 1rem;
-    margin-bottom: 10px;
-  }
-  
+
+  .order-details-page p,
   .order-details-page h3 {
-    font-size: 1.5rem;
-    margin-top: 30px;
-    margin-bottom: 15px;
+    font-size: 1rem;
   }
-  
-  .order-details-page ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
+
   .order-details-page li {
-    background-color: #f8f8f8;
     padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
   }
-  
-  .loading {
-    text-align: center;
-    font-size: 1.2rem;
-    padding: 20px;
-  }
-  
+
+  .loading,
   .error-message {
-    color: red;
-    text-align: center;
-    padding: 20px;
+    font-size: 1.1rem;
   }
-  
+}

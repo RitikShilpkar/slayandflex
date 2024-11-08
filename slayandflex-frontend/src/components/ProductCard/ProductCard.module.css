@@ -1,48 +1,56 @@
-/* ProductCard.module.css */
-
 .product-card {
-  border: 1px solid #eaeaea;
+  border: 1px solid #d4cfc5; /* Muted beige for a softer border look */
   border-radius: 12px;
-  padding: 16px;
+  padding: 20px;
   text-align: center;
-  background: #ffffff;
+  background: #f7f5eb; /* Light beige background for consistency */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Playfair Display', serif; /* Utilize the globally imported font */
 }
 
 .product-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15); /* Slightly darker shadow for a more pronounced hover effect */
 }
 
 .product-image {
   width: 100%;
-  height: 180px;
+  height: 200px; /* Slightly increased height for a better display */
   object-fit: cover;
   border-radius: 8px;
+  border: 1px solid #d4cfc5; /* Matches card border for a cohesive look */
 }
 
 .product-card h3 {
-  margin: 12px 0 8px 0;
-  font-size: 20px;
-  color: var(--primary-color);
+  margin: 16px 0 8px 0;
+  font-size: 1.5em;
+  color: #3d2f25; /* Dark earthy tone for the product name */
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.product-card h3:hover {
+  color: #5b5347; /* Slightly lighter tone for a hover effect */
 }
 
 .product-card p {
-  font-size: 18px;
-  color: var(--secondary-color);
-  margin-bottom: 12px;
+  font-size: 1.2em;
+  color: #5b5347; /* Consistent warm brown tone for price */
+  margin-bottom: 16px;
 }
 
 .view-details {
   display: inline-block;
-  padding: 10px 20px;
-  background-color: var(--secondary-color);
-  color: #ffffff;
+  padding: 12px 24px;
+  background-color: #3d2f25; /* Dark earthy background color for button */
+  color: #e7e4d8; /* Light beige text color for contrast */
   border-radius: 8px;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 1em;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .view-details:hover {
-  background-color: #27ae60;
+  background-color: #5b5347; /* Slightly lighter tone for hover effect */
+  color: #f1e8d6; /* Softer text color on hover */
 }

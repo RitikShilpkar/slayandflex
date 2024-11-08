@@ -1,23 +1,25 @@
-/* LoadingSpinner.module.css */
-
 .spinner-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px;
+  height: 100vh; /* Full viewport height to center the spinner */
+  background-color: #f7f5eb; /* Light beige background for a consistent look */
 }
 
 .spinner {
-  border: 6px solid #f3f3f3;
-  border-top: 6px solid var(--primary-color);
+  width: 50px;
+  height: 50px;
+  border: 6px solid #e7e4d8; /* Light beige color for the spinner base */
+  border-top: 6px solid #3d2f25; /* Dark earthy color for the spinner tip */
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
   animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  to {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
     transform: rotate(360deg);
   }
 }

@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../../services/api';
 
 interface Plan {
+  _id: string;
   name: string;
   plan: string;
   price: number;
@@ -52,9 +53,9 @@ export const subscribePlan = createAsyncThunk(
 // Async thunk to cancel the current plan
 export const cancelPlan = createAsyncThunk(
   'promotions/cancelPlan',
-  async (_, { rejectWithValue }) => {
+  async (id: string, { rejectWithValue }, ) => {
     try {
-      const response = await api.post('/api/subscriptions/plans/cancel');
+      const response = await api.put(`/api/subscriptions/${id}/cancel`, {id});
       return response.data;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message || 'Failed to cancel plan');

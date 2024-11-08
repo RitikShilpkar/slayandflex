@@ -1,0 +1,45 @@
+/* Product Listing Page Styles */
+.product-listing-page {
+    padding: 40px;
+    background-color: #f7f5eb; /* Light beige background for a soft and consistent look */
+    font-family: 'Playfair Display', serif; /* Utilize the globally imported font for elegance */
+    max-width: 1400px;
+    margin: 0 auto; /* Center the page */
+    text-align: center; /* Center-align content by default */
+  }
+  
+  .product-listing-page h1 {
+    font-size: 3rem;
+    color: #3d2f25; /* Dark earthy color for heading */
+    margin-bottom: 40px;
+    font-weight: bold;
+  }
+  
+  .product-listing-page p {
+    font-size: 1.4rem;
+    color: #5b5347; /* Warm brown color for loading and error messages */
+  }
+  
+  /* Product Grid Styles */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    justify-items: center;
+    align-items: start;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .product-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 50px;
+    }
+  }
+  
+  @media screen and (min-width: 1200px) {
+    .product-grid {
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 60px;
+    }
+  }
+  

@@ -24,6 +24,6 @@ router.post('/plans', protect, authorizeRoles('admin'), addPlan);
 
 router.post('/plans/subscribe', protect,  subscribeToPlan);
 router.get('/my', protect, getMySubscription);
-router.put('/:id/cancel', cancelSubscription);
+router.put('/:id/cancel',protect, cancelSubscription);
 
 export default router;

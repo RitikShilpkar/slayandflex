@@ -92,14 +92,18 @@ export const createReturnRequest = async (
     const adminUsers = await mongoose.model('User').find({ role: 'admin' });
 
     for (const admin of adminUsers) {
-      await createNotification({
-        userId: admin._id.toString(),
-        type: 'new_return_request',
-        message: `A new return request has been submitted by ${req.user?.name} for order #${order._id}.`,
-        emailSubject: 'New Return Request',
-        emailBody: `<p>Hi ${admin.name},</p><p>A new return request has been submitted by ${req.user?.name} for order #${order._id}.</p>`,
-        smsBody: `New return request by ${req.user?.name} for order #${order._id}.`,
-      });
+      const emailBody = `
+      <div style="font-family: 'Playfair Display', serif; color: #3d2f25; line-height: 1.6; padding: 20px; background-color: #f9f9f9; border-radius: 8px;">
+        <h1 style="color: #3d2f25; font-size: 2rem; margin-bottom: 20px;">New Return Request</h1>
+        <p style="font-size: 1.2rem;">Hi ${admin.name},</p>
+        <p style="font-size: 1.2rem; margin-top: 10px;">
+          A new return request has been submitted by <strong style="color: #5b5347;">${req.user?.name}</strong> for order ID <strong style="color: #5b5347;">${order._id}</strong>.
+        </p>
+        <p style="font-size: 1.2rem; margin-top: 30px;">Please review the return request at your earliest convenience.</p>
+        <p style="font-size: 1rem; margin-top: 40px; color: #5b5347;">&copy; ${new Date().getFullYear()} Slay and Flex. All rights reserved.</p>
+      </div>
+    `;
+    
     }
 
     res.status(201).json(returnRequest);
@@ -185,14 +189,18 @@ export const updateReturnRequestStatus = async (
     await returnRequest.save();
 
     // Notify the user about the status update
-    await createNotification({
-      userId: returnRequest.user._id.toString(),
-      type: 'return_status_update',
-      message: `Your return request for order #${returnRequest.order} has been ${status}.`,
-      emailSubject: 'Return Request Status Update',
-      emailBody: `<p>Hi ${returnRequest.user.name},</p><p>Your return request for order #${returnRequest.order} has been <strong>${status}</strong>.</p>`,
-      smsBody: `Your return request for order #${returnRequest.order} has been ${status}.`,
-    });
+    const emailBody = `
+    <div style="font-family: 'Playfair Display', serif; color: #3d2f25; line-height: 1.6; padding: 20px; background-color: #f9f9f9; border-radius: 8px;">
+      <h1 style="color: #3d2f25; font-size: 2rem; margin-bottom: 20px;">Return Request Status Update</h1>
+      <p style="font-size: 1.2rem;">Hi ${returnRequest.user.name},</p>
+      <p style="font-size: 1.2rem; margin-top: 10px;">
+        Your return request for order ID <strong style="color: #5b5347;">${returnRequest.order}</strong> has been updated to: <strong style="color: #5b5347;">${status}</strong>.
+      </p>
+      <p style="font-size: 1.2rem; margin-top: 30px;">If you have any questions, feel free to contact our support team.</p>
+      <p style="font-size: 1rem; margin-top: 40px; color: #5b5347;">&copy; ${new Date().getFullYear()} Slay and Flex. All rights reserved.</p>
+    </div>
+  `;
+  
 
     res.status(200).json(returnRequest);
   } catch (error) {

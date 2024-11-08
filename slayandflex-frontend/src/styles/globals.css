@@ -1,9 +1,14 @@
 @import './variables.css';
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
   font-family: var(--font-family);
-  background-color: #f9f9f9;
+  background-color: #f7f5eb;
   color: #333333;
 }
 

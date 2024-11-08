@@ -1,17 +1,68 @@
 /* PaymentSuccessPage.module.css */
 
 .success-page {
-    padding: 20px;
-    text-align: center;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.success-page h1 {
+  font-size: 2.5rem;
+  color: #3d2f25; /* Dark earthy tone for a warm, welcoming message */
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.success-page p {
+  font-size: 1.4rem;
+  color: #5b5347; /* Warm brown tone to match the theme */
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* Add a button for continued shopping */
+.continue-shopping-button {
+  padding: 12px 24px;
+  background-color: #3d2f25; /* Dark earthy tone */
+  color: #e7e4d8; /* Light beige text for contrast */
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  display: inline-block;
+}
+
+.continue-shopping-button:hover {
+  background-color: #5b5347; /* Slightly lighter tone */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .success-page {
+    padding: 15px;
   }
-  
+
   .success-page h1 {
     font-size: 2rem;
-    color: #2ecc71;
-    margin-bottom: 20px;
   }
-  
+
   .success-page p {
     font-size: 1.2rem;
   }
-  
+
+  .continue-shopping-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}

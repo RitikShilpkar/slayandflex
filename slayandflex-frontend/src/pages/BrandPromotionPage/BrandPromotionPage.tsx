@@ -27,11 +27,15 @@ const BrandPromotionPage: React.FC = () => {
   }, [dispatch, user]);
 
   const handleSubscribe = (planName: string) => {
+    console.log({planName});
+    
     dispatch(subscribePlan(planName));
   };
 
-  const handleCancel = () => {
-    dispatch(cancelPlan());
+  const handleCancel = (id: string) => {
+    console.log({id});
+    
+    dispatch(cancelPlan(id));
   };
 
   const handleViewAnalytics = () => {
@@ -65,7 +69,7 @@ const BrandPromotionPage: React.FC = () => {
             <button className={styles['analytics-button']} onClick={handleViewAnalytics}>
               View Analytics
             </button>
-            <button className={styles['cancel-button']} onClick={handleCancel}>
+            <button className={styles['cancel-button']} onClick={()=> handleCancel(currentPlan._id ?? '')}>
               Cancel Plan
             </button>
           </div>
@@ -95,7 +99,7 @@ const BrandPromotionPage: React.FC = () => {
             ) : (
               <button
                 className={styles['plan-button']}
-                onClick={() => handleSubscribe(plan.plan)} // Corrected plan.plan
+                onClick={() => handleSubscribe(plan.name)} 
               >
                 {currentPlan ? 'Change to this Plan' : 'Get Started'}
               </button>

@@ -12,7 +12,6 @@ const CartPage: React.FC = () => {
   const { items, totalAmount } = useAppSelector((state) => state.cart);
 
   const handleRemove = (productId: string) => {
-    console.log({productId});
     
     dispatch(removeItemFromCart(productId));
   };

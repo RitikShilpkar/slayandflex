@@ -1,85 +1,146 @@
-/* ProductPage.module.css */
 
 .product-page {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 40px;
+  background-color: #f7f5eb; /* Light beige background for consistency */
+  font-family: 'Playfair Display', serif; /* Utilize the globally imported font */
+  max-width: 1200px;
+  margin: 0 auto; /* Center the product page */
+  gap: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Soft shadow for overall page depth */
+  border-radius: 20px; /* Slight rounding for a polished appearance */
 }
 
+/* Product Gallery Section */
 .product-gallery {
   width: 100%;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .product-image {
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   height: auto;
-  border-radius: 8px;
+  border-radius: 16px;
+  border: 1px solid #d4cfc5; /* Matches the border color used across components */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Adds depth to the image */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.product-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2); /* Adds more depth on hover */
+}
+
+/* Product Details Section */
 .product-details {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
 }
 
 .product-name {
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   margin-bottom: 10px;
-  color: var(--primary-color);
+  color: #3d2f25; /* Dark earthy tone for the product name */
+  font-weight: bold;
 }
 
 .product-price {
-  font-size: 1.6rem;
+  font-size: 2rem;
   margin-bottom: 15px;
-  color: var(--secondary-color);
+  color: #5b5347; /* Warm brown tone for the price */
   font-weight: bold;
 }
 
 .product-description {
-  font-size: 1rem;
-  margin-bottom: 20px;
-  color: #666666;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #5b5347; /* Consistent warm brown tone for description */
+  line-height: 1.8; /* Improve readability */
 }
 
+/* Enhanced Add to Cart Button */
 .add-to-cart-button {
-  padding: 12px 24px;
-  background-color: var(--primary-color);
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
+  padding: 16px 32px;
+  background-color: #3d2f25; /* Dark earthy color for button background */
+  color: #e7e4d8; /* Light beige for the text */
+  border: 2px solid transparent;
+  border-radius: 50px; /* Rounded for a soft, elegant look */
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 1px; /* Improve readability */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* Adds depth to the button */
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto; /* Center the button */
 }
 
 .add-to-cart-button:hover {
-  background-color: #2980b9;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #5b5347; /* Slightly lighter earthy tone for hover effect */
+  border-color: #e7e4d8; /* Adds a border to make it visually stand out */
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Enhances hover effect */
 }
 
+.add-to-cart-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Reduces depth when clicked */
+}
+
+.add-to-cart-button::before {
+  content: '🛒'; /* Unicode cart symbol for a more engaging look */
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 1.4rem; /* Adjust to make it stand out */
+  vertical-align: middle;
+}
+
+.add-to-cart-button:hover::before {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Keyframes for Subtle Shake Animation on Icon */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  50% { transform: translateX(2px); }
+  75% { transform: translateX(-2px); }
+  100% { transform: translateX(0); }
+}
+
+/* Loading, Error, and Not-Found Messages */
 .loading,
 .error,
 .not-found {
   text-align: center;
-  font-size: 1.2em;
-  margin-top: 50px;
+  font-size: 1.4em;
+  margin-top: 60px;
+  color: #3d2f25; /* Dark earthy tone to stay consistent */
 }
 
 .error {
-  color: var(--error-color);
+  color: #a94442; /* Slightly earthy red tone to represent error */
 }
 
+/* Responsive Design for Larger Screens */
 @media screen and (min-width: 768px) {
   .product-page {
     flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 60px;
   }
 
   .product-gallery {
     width: 50%;
-    margin-right: 20px;
+    margin-bottom: 0;
   }
 
   .product-details {

@@ -1,20 +1,26 @@
-/* Header.module.css */
-
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  background-color: var(--primary-color);
-  color: #ffffff;
+  background-color: #3d2f25; /* Dark earthy brown color matching the reference */
+  color: #e7e4d8; /* Light beige color for the text */
   position: sticky; /* Make the header sticky */
   top: 0;           /* Stick to the top */
-  z-index: 1000000;    /* Ensure it stays above other elements */
+  z-index: 1000000; /* Ensure it stays above other elements */
+  font-family: 'Playfair Display', serif; /* Font already imported globally */
 }
 
 .logo {
-  font-size: 1.5em;
+  font-size: 2em;
   font-weight: bold;
+  color: #e7e4d8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: #f1e8d6; /* Slightly lighter beige for hover effect */
 }
 
 .menu-icon {
@@ -26,7 +32,7 @@
 .menu-icon div {
   width: 25px;
   height: 3px;
-  background-color: #ffffff;
+  background-color: #e7e4d8; /* Matches the logo color */
   margin: 4px 0;
 }
 
@@ -38,17 +44,23 @@
 .nav-links a,
 .nav-links button {
   margin-left: 20px;
-  color: #ffffff;
+  color: #e7e4d8;
   text-decoration: none;
-  font-size: 1em;
+  font-size: 1.1em;
   background: none;
   border: none;
   cursor: pointer;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
 .nav-links a:hover,
 .nav-links button:hover {
+  color: #f1e8d6; /* Lighter beige for hover */
   text-decoration: underline;
+}
+
+.logout-button {
+  font-style: italic;
 }
 
 /* Mobile Styles */
@@ -59,12 +71,12 @@
 
   .nav-links {
     position: fixed;
-    top: 0; /* Adjust based on header height if necessary */
+    top: 0;
     right: -100%;
     height: 100%;
     width: 200px;
     flex-direction: column;
-    background-color: var(--primary-color);
+    background-color: #3d2f25; /* Matches the header background color */
     transition: right 0.3s ease-in-out;
     z-index: 999; /* Ensure it appears over other elements */
   }
@@ -76,7 +88,8 @@
   .nav-links a,
   .nav-links button {
     margin: 20px 0;
-    font-size: 1.2em;
+    font-size: 1.3em;
+    color: #e7e4d8;
   }
 
   .nav-links a:hover,

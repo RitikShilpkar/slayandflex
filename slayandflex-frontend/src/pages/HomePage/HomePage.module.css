@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
 .home-page {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 60px); /* Adjust based on header height */
   overflow-x: hidden;
+  background-color: #f7f5eb; /* A soft beige background to match the elegant look */
 }
 
 .options {
@@ -15,14 +18,15 @@
 
 .option-card {
   padding: 40px;
-  background-color: #ffffff;
-  border: 1px solid #eaeaea;
+  background-color: #f7f5eb; /* Same background to create a seamless look */
+  border: 1px solid #d4cfc5;
   border-radius: 8px;
   text-align: center;
   width: 100%;
   max-width: 300px;
   text-decoration: none;
-  color: inherit;
+  color: #5b5347; /* Subtle warm brown color for text */
+  font-family: 'Playfair Display', serif; /* Elegant serif font */
   transition: box-shadow 0.3s ease;
 }
 
@@ -30,12 +34,18 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.option-card h2 {
+.title {
   margin-bottom: 20px;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
-.option-card p {
-  color: #666666;
+.description {
+  color: #5b5347;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  font-style: italic;
 }
 
 /* Adjust for larger screens */
