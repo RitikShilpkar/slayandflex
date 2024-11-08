@@ -29,7 +29,10 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://slayandflex.vercel.app/'], // Or '*', but it's better to specify your frontend's URL
+  methods: 'GET,POST,PUT,DELETE',
+}));
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
